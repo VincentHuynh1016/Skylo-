@@ -145,27 +145,29 @@ struct UserProfileView: View {
                     
                     //THE LAZYVSTACK WILL BE HERE
                     
-                    LazyVStack(spacing: 20) {
-                        ForEach(posts) { post in
-                            HStack {
-                                Image(post.imageName)
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 150, height: 250)
-                                    .clipped()
-                                    .cornerRadius(10)
-                                
-                                Spacer().frame(width: 20)
-                                
-                                Image(post.imageName)  // Simulating another post
-                                    .resizable()
-                                    .aspectRatio(contentMode: .fill)
-                                    .frame(width: 150, height: 250)
-                                    .clipped()
-                                    .cornerRadius(10)
-                            }
+                    List(posts) { post in
+                        
+                        HStack {
+                            Image(post.imageName)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 150, height: 250)
+                                .clipped()
+                                .cornerRadius(10)
+                                        
+                            Spacer().frame(width: 20)
+                                        
+                            Image(post.imageName)
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 150, height: 250)
+                                .clipped()
+                                .cornerRadius(10)
                         }
+                        .listRowBackground(Color.clear)
                     }
+                    .listStyle(PlainListStyle())
+                    .background(Color.clear)
                     .padding(.horizontal)
                     
                     
@@ -207,5 +209,3 @@ let posts: [userPost] = [
     userPost(imageName: "User1"), // Replace with actual image names
     userPost(imageName: "User1"),
 ]
-
-
